@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package pb;
+
+option go_package = "./pb";
+
+message User {
+  string username = 1;
+  string first_name = 2;
+  string last_name = 3;
+  string email = 4;
+  int32 age = 5;
+}
+
+message UserList {
+  repeated User users = 1;
+}
