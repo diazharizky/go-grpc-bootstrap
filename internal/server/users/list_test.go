@@ -5,11 +5,13 @@ import (
 	"fmt"
 	"testing"
 
+	"github.com/diazharizky/go-grpc-bootstrap/internal/app"
 	"github.com/stretchr/testify/suite"
 )
 
 type listTestSuite struct {
 	suite.Suite
+	appCtx *app.Context
 }
 
 func TestListTestSuite(t *testing.T) {
@@ -29,7 +31,7 @@ func (ts listTestSuite) TestList() {
 			func(t *testing.T) {
 				ctx := context.Background()
 
-				client, closer := testServer(ctx)
+				client, closer := testServer(ctx, ts.appCtx)
 				defer closer()
 
 				client.List(ctx, nil)

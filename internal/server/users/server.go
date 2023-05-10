@@ -5,6 +5,7 @@ import (
 	"log"
 	"net"
 
+	"github.com/diazharizky/go-grpc-bootstrap/internal/app"
 	"github.com/diazharizky/go-grpc-bootstrap/pb"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials/insecure"
@@ -13,16 +14,19 @@ import (
 
 type server struct {
 	pb.UnimplementedUserServiceServer
+	appCtx *app.Context
 }
 
-func NewServer() *server {
-	return &server{}
+func NewServer(appCtx *app.Context) *server {
+	return &server{
+		appCtx: appCtx,
+	}
 }
 
-func testServer(ctx context.Context) (pb.UserServiceClient, func()) {
+func testServer(ctx context.Context, appCtx *app.Context) (pb.UserServiceClient, func()) {
 	srv := grpc.NewServer()
 
-	pb.RegisterUserServiceServer(srv, NewServer())
+	pb.RegisterUserServiceServer(srv, NewServer(appCtx))
 
 	buffer := 101024 * 1024
 	listener := bufconn.Listen(buffer)
