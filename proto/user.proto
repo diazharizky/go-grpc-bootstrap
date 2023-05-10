@@ -11,7 +11,3 @@ message User {
   string email = 4;
   int32 age = 5;
 }
-
-message UserList {
-  repeated User users = 1;
-}
