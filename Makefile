@@ -4,3 +4,9 @@ protogen:
 
 run:
 	go run main.go
+
+mock:
+	cd $(dir) && mockery --name="$(name)" && cd -
+
+test:
+	./coverage.sh $(coverage)
