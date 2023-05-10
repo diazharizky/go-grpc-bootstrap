@@ -13,5 +13,5 @@ service UserService {
 
 message ListResponse {
   bool ok = 1;
-  UserList users = 2;
+  repeated User users = 2;
 }

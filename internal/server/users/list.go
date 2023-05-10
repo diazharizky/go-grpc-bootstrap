@@ -15,12 +15,8 @@ func (srv server) List(ctx context.Context, emp *emptypb.Empty) (*pb.ListRespons
 		return &pb.ListResponse{}, nil
 	}
 
-	userList := pb.UserList{
-		Users: users,
-	}
-
 	return &pb.ListResponse{
 		Ok:    true,
-		Users: &userList,
+		Users: users,
 	}, nil
 }

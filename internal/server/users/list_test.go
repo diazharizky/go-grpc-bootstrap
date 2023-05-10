@@ -56,7 +56,7 @@ func (ts listTestSuite) TestList() {
 			want: want{
 				result: &pb.ListResponse{
 					Ok:    true,
-					Users: &pb.UserList{},
+					Users: []*pb.User(nil),
 				},
 			},
 		},
