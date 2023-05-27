@@ -9,9 +9,29 @@ import "google/protobuf/empty.proto";
 
 service UserService {
   rpc List(google.protobuf.Empty) returns (ListResponse) {}
+  rpc Get(GetUsernameParam) returns (GetResponse) {}
+  rpc Create(CreateParams) returns (CreateResponse) {}
 }
 
 message ListResponse {
   bool ok = 1;
   repeated User users = 2;
+}
+
+message GetUsernameParam { string username = 1; }
+
+message GetResponse {
+  bool ok = 1;
+  User user = 2;
+}
+
+message CreateParams {
+  string username = 1;
+  string full_name = 2;
+  string email = 3;
+}
+
+message CreateResponse {
+  bool ok = 1;
+  User user = 2;
 }
