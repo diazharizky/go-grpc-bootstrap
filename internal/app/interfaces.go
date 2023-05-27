@@ -5,9 +5,9 @@ import (
 )
 
 type IUserRepository interface {
-	List() ([]*pb.User, error)
-	Get() ([]*pb.User, error)
-	Create(params pb.User) error
-	Update(params pb.User) error
+	List() (users []*pb.User, err error)
+	Get() (user *pb.User, err error)
+	Create(newUser *pb.User) error
+	Update(user *pb.User) error
 	Delete(username string) error
 }
