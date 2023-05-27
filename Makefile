@@ -10,3 +10,9 @@ mock:
 
 test:
 	./coverage.sh $(coverage)
+
+migrate-up:
+	migrate -database postgres://gogrpcbootstrap:gogrpcbootstrap@localhost:5432/gogrpcbootstrap?sslmode=disable -path ./migrations -verbose up
+
+migrate-down:
+	migrate -database postgres://gogrpcbootstrap:gogrpcbootstrap@localhost:5432/gogrpcbootstrap?sslmode=disable -path ./migrations -verbose down
