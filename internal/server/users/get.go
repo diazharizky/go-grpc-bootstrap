@@ -6,7 +6,7 @@ import (
 	"github.com/diazharizky/go-grpc-bootstrap/pb"
 )
 
-func (srv server) Get(ctx context.Context, getParam *pb.GetUsernameParam) (*pb.GetResponse, error) {
+func (srv serviceServer) Get(ctx context.Context, getParam *pb.GetUsernameParam) (*pb.GetResponse, error) {
 	user, err := srv.appCtx.UserRepository.Get(getParam.Username)
 	if err != nil {
 		return nil, err

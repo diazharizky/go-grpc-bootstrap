@@ -15,7 +15,7 @@ import (
 func testServer(ctx context.Context, appCtx *app.Context) (pb.UserServiceClient, func()) {
 	srv := grpc.NewServer()
 
-	pb.RegisterUserServiceServer(srv, NewServer(appCtx))
+	pb.RegisterUserServiceServer(srv, NewServiceServer(appCtx))
 
 	buffer := 101024 * 1024
 	listener := bufconn.Listen(buffer)

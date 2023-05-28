@@ -5,13 +5,13 @@ import (
 	"github.com/diazharizky/go-grpc-bootstrap/pb"
 )
 
-type server struct {
+type serviceServer struct {
 	pb.UnimplementedUserServiceServer
 	appCtx *app.Context
 }
 
-func NewServer(appCtx *app.Context) *server {
-	return &server{
+func NewServiceServer(appCtx *app.Context) *serviceServer {
+	return &serviceServer{
 		appCtx: appCtx,
 	}
 }

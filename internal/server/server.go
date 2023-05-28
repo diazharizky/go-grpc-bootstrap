@@ -23,7 +23,7 @@ func init() {
 func Serve(appCtx *app.Context) {
 	srv = grpc.NewServer()
 
-	userServer := users.NewServer(appCtx)
+	userServer := users.NewServiceServer(appCtx)
 
 	pb.RegisterUserServiceServer(srv, userServer)
 

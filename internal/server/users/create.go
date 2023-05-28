@@ -6,7 +6,7 @@ import (
 	"github.com/diazharizky/go-grpc-bootstrap/pb"
 )
 
-func (srv server) Create(ctx context.Context, newUser *pb.CreateParams) (*pb.CreateResponse, error) {
+func (srv serviceServer) Create(ctx context.Context, newUser *pb.CreateParams) (*pb.CreateResponse, error) {
 	user := &pb.User{
 		Username: newUser.Username,
 		FullName: newUser.FullName,
