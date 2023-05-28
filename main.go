@@ -3,7 +3,7 @@ package main
 import (
 	"github.com/diazharizky/go-grpc-bootstrap/internal/app"
 	"github.com/diazharizky/go-grpc-bootstrap/internal/repositories"
-	"github.com/diazharizky/go-grpc-bootstrap/internal/server"
+	"github.com/diazharizky/go-grpc-bootstrap/internal/services"
 	"github.com/diazharizky/go-grpc-bootstrap/pkg/db"
 )
 
@@ -14,5 +14,5 @@ func main() {
 
 	appCtx.UserRepository = repositories.NewUserRepository(db)
 
-	server.Serve(appCtx)
+	services.Serve(appCtx)
 }

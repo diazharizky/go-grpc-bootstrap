@@ -1,4 +1,4 @@
-package server
+package services
 
 import (
 	"fmt"
@@ -7,7 +7,7 @@ import (
 
 	"github.com/diazharizky/go-grpc-bootstrap/config"
 	"github.com/diazharizky/go-grpc-bootstrap/internal/app"
-	"github.com/diazharizky/go-grpc-bootstrap/internal/server/users"
+	"github.com/diazharizky/go-grpc-bootstrap/internal/services/user"
 	"github.com/diazharizky/go-grpc-bootstrap/pb"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/reflection"
@@ -23,7 +23,7 @@ func init() {
 func Serve(appCtx *app.Context) {
 	srv = grpc.NewServer()
 
-	userServer := users.NewServiceServer(appCtx)
+	userServer := user.NewService(appCtx)
 
 	pb.RegisterUserServiceServer(srv, userServer)
 
@@ -36,7 +36,7 @@ func Serve(appCtx *app.Context) {
 		log.Fatalf("Error unable to listen net address: %v\n", err)
 	}
 
-	log.Printf("Server is running at %v\n", listener.Addr())
+	log.Printf("Server is running on %v\n", listener.Addr())
 
 	if err = srv.Serve(listener); err != nil {
 		log.Fatalf("Error unable to run the server: %v\n", err)

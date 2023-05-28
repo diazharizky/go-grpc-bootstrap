@@ -14,13 +14,13 @@ type IDatabase interface {
 }
 
 var (
-	dbType enum.DbType
+	dbType enum.DBType
 )
 
 func init() {
 	config.Global.SetDefault("db.type", "postgres")
 
-	dbType = enum.DbType(config.Global.GetString("db.type"))
+	dbType = enum.DBType(config.Global.GetString("db.type"))
 }
 
 func GetConnection() (conn *sql.DB) {
@@ -44,7 +44,7 @@ func getDB() (db IDatabase, err error) {
 	}
 
 	switch dbType {
-	case enum.DbTypePostgres:
+	case enum.DBTypePostgres:
 		db = NewPostgres()
 	default:
 		db = NewPostgres()

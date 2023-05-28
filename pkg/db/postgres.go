@@ -5,7 +5,7 @@ import (
 	"fmt"
 
 	"github.com/diazharizky/go-grpc-bootstrap/config"
-	_ "github.com/lib/pq"
+	_ "github.com/lib/pq" // Require for PostgreSQL driver
 )
 
 type postgres struct {
@@ -13,7 +13,7 @@ type postgres struct {
 	Port     string
 	User     string
 	Password string
-	DbName   string
+	DBName   string
 	SslMode  string
 }
 
@@ -32,7 +32,7 @@ func NewPostgres() postgres {
 		Port:     config.Global.GetString("db.port"),
 		User:     config.Global.GetString("db.user"),
 		Password: config.Global.GetString("db.password"),
-		DbName:   config.Global.GetString("db.database"),
+		DBName:   config.Global.GetString("db.database"),
 		SslMode:  config.Global.GetString("db.sslmode"),
 	}
 }
@@ -53,7 +53,7 @@ func (pg postgres) dsn() string {
 		pg.Port,
 		pg.User,
 		pg.Password,
-		pg.DbName,
+		pg.DBName,
 		pg.SslMode,
 	)
 }

@@ -34,9 +34,7 @@ func init() {
 	Global.SetEnvKeyReplacer(strings.NewReplacer(".", "_"))
 
 	Global.AutomaticEnv()
-
-	err := Global.ReadInConfig()
-	if err != nil {
+	if err := Global.ReadInConfig(); err != nil {
 		log.Printf("Error unable to load config file: %v", err)
 	}
 }

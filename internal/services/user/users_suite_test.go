@@ -1,21 +1,30 @@
-package users
+package user_test
 
 import (
 	"context"
 	"log"
 	"net"
+	"testing"
 
 	"github.com/diazharizky/go-grpc-bootstrap/internal/app"
+	"github.com/diazharizky/go-grpc-bootstrap/internal/services/user"
 	"github.com/diazharizky/go-grpc-bootstrap/pb"
+	. "github.com/onsi/ginkgo"
+	. "github.com/onsi/gomega"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials/insecure"
 	"google.golang.org/grpc/test/bufconn"
 )
 
+func TestUserService(t *testing.T) {
+	RegisterFailHandler(Fail)
+	RunSpecs(t, "User Service Test Suite")
+}
+
 func testServer(ctx context.Context, appCtx *app.Context) (pb.UserServiceClient, func()) {
 	srv := grpc.NewServer()
 
-	pb.RegisterUserServiceServer(srv, NewServiceServer(appCtx))
+	pb.RegisterUserServiceServer(srv, user.NewService(appCtx))
 
 	buffer := 101024 * 1024
 	listener := bufconn.Listen(buffer)

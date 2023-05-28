@@ -1,4 +1,4 @@
-package users
+package user
 
 import (
 	"context"
@@ -6,14 +6,14 @@ import (
 	"github.com/diazharizky/go-grpc-bootstrap/pb"
 )
 
-func (srv serviceServer) Create(ctx context.Context, newUser *pb.CreateParams) (*pb.CreateResponse, error) {
+func (svc service) Create(ctx context.Context, newUser *pb.CreateParams) (*pb.CreateResponse, error) {
 	user := &pb.User{
 		Username: newUser.Username,
 		FullName: newUser.FullName,
 		Email:    newUser.Email,
 	}
 
-	if err := srv.appCtx.UserRepository.Create(user); err != nil {
+	if err := svc.appCtx.UserRepository.Create(user); err != nil {
 		return nil, err
 	}
 

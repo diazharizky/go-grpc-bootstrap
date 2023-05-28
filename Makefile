@@ -9,10 +9,13 @@ mock:
 	cd $(dir) && mockery --name="$(name)" && cd -
 
 test:
-	./coverage.sh $(coverage)
+	CONFIG_FILE_PATH=${PWD}/config CONFIG_ENV=test go test -v ./...
 
 migrate-up:
 	migrate -database postgres://gogrpcbootstrap:gogrpcbootstrap@localhost:5432/gogrpcbootstrap?sslmode=disable -path ./migrations -verbose up
 
 migrate-down:
 	migrate -database postgres://gogrpcbootstrap:gogrpcbootstrap@localhost:5432/gogrpcbootstrap?sslmode=disable -path ./migrations -verbose down
+
+lint:
+	golangci-lint run --timeout 3m

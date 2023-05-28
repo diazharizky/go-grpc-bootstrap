@@ -1,20 +1,21 @@
 package enum
 
-type DbType string
+type DBType string
 
 const (
-	DbTypePostgres DbType = "postgres"
+	DBTypePostgres DBType = "postgres"
+	DBTypeMariaDB  DBType = "mariadb"
 )
 
-func (t DbType) Validate() bool {
+func (t DBType) Validate() bool {
 	switch t {
-	case DbTypePostgres:
+	case DBTypePostgres, DBTypeMariaDB:
 		return true
 	}
 
 	return false
 }
 
-func (t DbType) String() string {
+func (t DBType) String() string {
 	return string(t)
 }
