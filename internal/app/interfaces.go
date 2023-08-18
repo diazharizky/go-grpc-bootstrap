@@ -1,6 +1,6 @@
 package app
 
-import "github.com/diazharizky/go-grpc-bootstrap/models"
+import "github.com/diazharizky/go-grpc-bootstrap/internal/models"
 
 type IUserRepository interface {
 	List() (users models.Users, err error)

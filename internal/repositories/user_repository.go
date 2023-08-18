@@ -1,7 +1,7 @@
 package repositories
 
 import (
-	"github.com/diazharizky/go-grpc-bootstrap/models"
+	"github.com/diazharizky/go-grpc-bootstrap/internal/models"
 	"go.mongodb.org/mongo-driver/mongo"
 )
 
