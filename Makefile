@@ -1,7 +1,10 @@
 .PHONY: protogen run lint
 
+clean:
+	rm -rf ./pb/*.go
+
 protogen:
-	rm -rf ./pb/*.go && \
+	make clean && \
 	protoc ./proto/*.proto --go_out=. --go-grpc_out=.
 
 run:

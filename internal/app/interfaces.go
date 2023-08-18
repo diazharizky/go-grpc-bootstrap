@@ -1,13 +1,11 @@
 package app
 
-import (
-	"github.com/diazharizky/go-grpc-bootstrap/pb"
-)
+import "github.com/diazharizky/go-grpc-bootstrap/models"
 
 type IUserRepository interface {
-	List() (users []*pb.User, err error)
-	Get(username string) (user *pb.User, err error)
-	Create(newUser *pb.User) error
-	Update(user *pb.User) error
+	List() (users []models.User, err error)
+	Get(username string) (user *models.User, err error)
+	Create(newUser *models.User) error
+	Update(user *models.User) error
 	Delete(username string) error
 }
