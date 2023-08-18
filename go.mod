@@ -3,8 +3,6 @@ module github.com/diazharizky/go-grpc-bootstrap
 go 1.20
 
 require (
-	github.com/golang/mock v1.4.4
-	github.com/lib/pq v1.10.9
 	github.com/onsi/ginkgo v1.16.5
 	github.com/onsi/gomega v1.27.7
 	github.com/spf13/viper v1.15.0
