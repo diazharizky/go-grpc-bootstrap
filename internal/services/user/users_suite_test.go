@@ -21,7 +21,7 @@ func TestUserService(t *testing.T) {
 	RunSpecs(t, "User Service Test Suite")
 }
 
-func testServer(ctx context.Context, appCtx *app.Context) (pb.UserServiceClient, func()) {
+func testServer(ctx context.Context, appCtx *app.Ctx) (pb.UserServiceClient, func()) {
 	srv := grpc.NewServer()
 
 	pb.RegisterUserServiceServer(srv, user.NewService(appCtx))

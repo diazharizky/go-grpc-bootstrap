@@ -10,7 +10,7 @@ The structure is mostly inspired by <https://github.com/golang-standards/project
 
 A single service is responsible to handle a single task/business process or could be a set of call of other services.
 
-### App Context
+### App Ctx
 
 Is a core and shared component that includes services, repositories, databases, cache, etc..
 

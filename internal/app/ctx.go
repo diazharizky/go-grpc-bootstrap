@@ -1,5 +1,5 @@
 package app
 
-type Context struct {
+type Ctx struct {
 	UserRepository IUserRepository
 }

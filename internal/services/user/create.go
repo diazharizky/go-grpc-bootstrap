@@ -3,6 +3,7 @@ package user
 import (
 	"context"
 
+	"github.com/diazharizky/go-grpc-bootstrap/models"
 	"github.com/diazharizky/go-grpc-bootstrap/pb"
 )
 
@@ -13,7 +14,13 @@ func (svc service) Create(ctx context.Context, newUser *pb.CreateParams) (*pb.Cr
 		Email:    newUser.Email,
 	}
 
-	if err := svc.appCtx.UserRepository.Create(user); err != nil {
+	mUser := &models.User{
+		Username: user.Username,
+		FullName: user.FullName,
+		Email:    user.Email,
+	}
+
+	if err := svc.appCtx.UserRepository.Create(mUser); err != nil {
 		return nil, err
 	}
 

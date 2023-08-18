@@ -20,7 +20,7 @@ func init() {
 	config.Global.SetDefault("server.port", "5000")
 }
 
-func Serve(appCtx *app.Context) {
+func Serve(appCtx *app.Ctx) {
 	srv = grpc.NewServer()
 
 	userServer := user.NewService(appCtx)

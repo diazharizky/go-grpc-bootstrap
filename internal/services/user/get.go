@@ -7,9 +7,15 @@ import (
 )
 
 func (svc service) Get(ctx context.Context, getParam *pb.GetUsernameParam) (*pb.GetResponse, error) {
-	user, err := svc.appCtx.UserRepository.Get(getParam.Username)
+	mUser, err := svc.appCtx.UserRepository.Get(getParam.Username)
 	if err != nil {
 		return nil, err
+	}
+
+	user := &pb.User{
+		Username: mUser.Username,
+		FullName: mUser.FullName,
+		Email:    mUser.Email,
 	}
 
 	return &pb.GetResponse{

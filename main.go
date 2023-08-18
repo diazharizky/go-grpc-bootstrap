@@ -10,7 +10,7 @@ import (
 )
 
 func main() {
-	appCtx := &app.Context{}
+	appCtx := &app.Ctx{}
 
 	client, err := mongodb.GetClient()
 	if err != nil {

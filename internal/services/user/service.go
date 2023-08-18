@@ -7,10 +7,11 @@ import (
 
 type service struct {
 	pb.UnimplementedUserServiceServer
-	appCtx *app.Context
+
+	appCtx *app.Ctx
 }
 
-func NewService(appCtx *app.Context) *service {
+func NewService(appCtx *app.Ctx) *service {
 	return &service{
 		appCtx: appCtx,
 	}
