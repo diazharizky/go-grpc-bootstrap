@@ -15,7 +15,7 @@ func NewUserRepository(client *mongo.Client) userRepository {
 	}
 }
 
-func (r userRepository) List() (users []models.User, err error) {
+func (r userRepository) List() (users models.Users, err error) {
 	return
 }
 

@@ -8,16 +8,10 @@ import (
 )
 
 func (svc service) Create(ctx context.Context, newUser *pb.CreateParams) (*pb.CreateResponse, error) {
-	user := &pb.User{
+	mUser := &models.User{
 		Username: newUser.Username,
 		FullName: newUser.FullName,
 		Email:    newUser.Email,
-	}
-
-	mUser := &models.User{
-		Username: user.Username,
-		FullName: user.FullName,
-		Email:    user.Email,
 	}
 
 	if err := svc.appCtx.UserRepository.Create(mUser); err != nil {
@@ -26,6 +20,6 @@ func (svc service) Create(ctx context.Context, newUser *pb.CreateParams) (*pb.Cr
 
 	return &pb.CreateResponse{
 		Ok:   true,
-		User: user,
+		User: mUser.PB(),
 	}, nil
 }
