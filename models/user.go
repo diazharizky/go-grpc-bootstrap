@@ -29,11 +29,11 @@ func (u User) PB() *pb.User {
 	}
 }
 
-func (u Users) PB() []*pb.User {
-	users := make([]*pb.User, len(u.Data))
-	for i, u := range u.Data {
-		users[i] = u.PB()
+func (u Users) PB() (users []*pb.User) {
+	users = make([]*pb.User, len(u.Data))
+	for i, user := range u.Data {
+		users[i] = user.PB()
 	}
 
-	return users
+	return
 }
